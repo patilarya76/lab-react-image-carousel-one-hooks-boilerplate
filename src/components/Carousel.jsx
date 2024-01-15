@@ -8,6 +8,31 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 // complete the function below:
 function Carousel() {
+    const [currindex,setcurrIndex]=useState(0)
+    function handlePrev(){
+        setcurrIndex(currindex>0 ? currindex-1: images.length-1)
+    }
+
+    function handleNext(){
+        setcurrIndex(currindex<images.length-1 ? currindex+1:0)
+    }
+    return(
+        <div className="carousel-container flex" >
+            <div className="leftArrow arroeDiv flex" onClick={handlePrev}>
+                <ArrowBackIosIcon/>
+  
+            </div>
+            <div className="rigthArrow arrowDiv flex" onClick={handleNext}>
+                <ArrowForwardIosIcon/>
+
+
+            </div>
+            <h2 className="title">{images[currindex].title} </h2>
+            <h4 className="caption">{images[currindex].subtitle} </h4>
+            <img src={images[currindex].img} alt="" />
+          
+        </div>
+    )
 }
 
 export default Carousel;
